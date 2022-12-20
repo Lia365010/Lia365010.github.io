@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./normalize.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main {
+            display: block;
+        }
+        .hr {
+            box-sizing: content-box; /* 1 */
+            height: 0; /* 1 */
+            overflow: visible; /* 2 */
+        }
+        .main-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: rgb(112, 184, 184);
+            /* 讓選單定位 */
+            position: relative;
+        }
+
+        .logo img{
+            vertical-align: middle;
+        }
+        .main-nav a{
+            /* display: block; */
+            padding: 10px 20px;
+            text-decoration: none;
+            color: rgb(17, 17, 17);
+        }
+
+
+        .step-nav{
+            display:none;
+            center
+        }
+
+        input{
+            display: none;
+        }
+        
+        /* @media screen and (max-width:767px){} */
+        @media screen and (width<768px) {
+            .HB{
+                width: 40px;
+                height: 40px;
+                background-color: rgb(7, 44, 39);
+            /* 漢堡線排列 */
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                position: relative;
+            }
+
+
+            .HB span{
+                width: 80%;
+                height: 2px;
+                background-color: #fff;
+            }
+            .main-nav{
+                position:absolute;
+                background-color:rgb(147, 193, 178); ;
+                top:100%;
+                left: 0;
+                right:0;
+                opacity: 0;
+
+            }
+            #menu-control:checked~ .main-header .main-nav{
+                left: 0;
+                opacity: 1;
+            }
+
+            #menu-control:checked~ .main-header .HB span:nth-child(2){
+                display: none;
+            }
+
+            #menu-control:checked~ .main-header .HB span:first-child{
+                position: absolute;
+                align-self: center;
+                transform:  rotate(45deg);
+            }
+            #menu-control:checked~ .main-header .HB span:last-child{
+                position: absolute;
+                align-self: center;
+                transform:  rotate(135deg);
+            }
+
+            .main-nav a{
+                display: block;
+            }
+            .main-nav a +a {
+                border-top: 1px solid #eee ;
+            }
+            
+            .main-nav-box{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+                flex-wrap: wrap;
+                font-size: 24px;
+                position: relative;
+            }
+            .step-nav {
+                width: 100%;
+                background-color:rgb(187, 203, 117);;
+                font-size: 20px;
+                left: -200%;
+                right:0;
+                opacity: 0;
+                align-items: center;
+                
+            }
+
+            .LHB{
+                position: relative;
+                width: 30px;
+                height: 20px;
+                background-color: rgb(7, 44, 39);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+
+            .LHB span{
+                width: 80%;
+                height: 1px;
+                background-color: rgb(255, 255, 255);
+            }
+
+            #list-control-about:checked~ .step-nav{
+                display: block;
+                opacity: 1;
+                left:0;
+                
+            }
+
+            #list-control-about:checked~ .LHB span:nth-child(2){
+                display: none;
+            }
+
+            #list-control-about:checked~ .LHB span:first-child{
+                position: absolute;
+                align-self: center;
+                transform:  rotate(45deg);
+            }
+
+            #list-control-about:checked~ .LHB span:last-child{
+                position: absolute;
+                align-self: center;
+                transform:  rotate(135deg);
+            }
+
+            #list-control-members:checked~ .step-nav{
+                display: block;
+                opacity: 1;
+                left:0;
+            }
+
+            #list-control-members:checked~ .LHB span:nth-child(2){
+                display: none;
+            }
+
+            #list-control-members:checked~ .LHB span:first-child{
+                position: absolute;
+                align-self: center;
+                transform:  rotate(45deg);
+            }
+
+            #list-control-members:checked~ .LHB span:last-child{
+                position: absolute;
+                align-self: center;
+                transform:  rotate(135deg);
+            }
+
+            #list-control-service:checked~ .step-nav{
+                display: block;
+                opacity: 1;
+                left:0;
+            }
+
+            #list-control-service:checked~ .LHB span:nth-child(2){
+                display: none;
+            }
+
+            #list-control-service:checked~ .LHB span:first-child{
+                position: absolute;
+                align-self: center;
+                transform:  rotate(45deg);
+            }
+
+            #list-control-service:checked~ .LHB span:last-child{
+                position: absolute;
+                align-self: center;
+                transform:  rotate(135deg);
+            }
+
+            #list-control-contact:checked~ .step-nav{
+                display: block;
+                opacity: 1;
+                left:0;
+            }
+
+            #list-control-contact:checked~ .LHB span:nth-child(2){
+                display: none;
+            }
+
+            #list-control-contact:checked~ .LHB span:first-child{
+                position: absolute;
+                align-self: center;
+                transform:  rotate(45deg);
+            }
+
+            #list-control-contact:checked~ .LHB span:last-child{
+                position: absolute;
+                align-self: center;
+                transform:  rotate(135deg);
+            }
+
+            #list-control-comp:checked~ .step-nav{
+                display: block;
+                opacity: 1;
+                left:0;
+            }
+
+            #list-control-comp:checked~ .LHB span:nth-child(2){
+                display: none;
+            }
+
+            #list-control-comp:checked~ .LHB span:first-child{
+                position: absolute;
+                align-self: center;
+                transform:  rotate(45deg);
+            }
+
+            #list-control-comp:checked~ .LHB span:last-child{
+                position: absolute;
+                align-self: center;
+                transform:  rotate(135deg);
+            }
+
+            #list-control-invest:checked~ .step-nav{
+                display: block;
+                opacity: 1;
+                left:0;
+            }
+
+            #list-control-invest:checked~ .LHB span:nth-child(2){
+                display: none;
+            }
+
+            #list-control-invest:checked~ .LHB span:first-child{
+                position: absolute;
+                align-self: center;
+                transform:  rotate(45deg);
+            }
+
+            #list-control-invest:checked~ .LHB span:last-child{
+                position: absolute;
+                align-self: center;
+                transform:  rotate(135deg);
+            }
+        }
+        @media screen and (width>=768px){
+            /* 漢堡拿掉 */
+            .HB{
+                display: none;
+            }
+            .LHB{
+                display: none;
+            }
+            .main-nav{
+                display: flex;
+            }
+
+            .main-nav a{
+                color: #eee;
+            }
+
+            .main-nav a +a {
+                border-top: none ;
+            }
+
+            .main-nav-box a:hover{
+                background-color: rgb(48, 108, 99);
+                color:rgb(255, 255, 255)
+            }
+
+            .main-nav-box{
+                display: flex;
+                position: relative;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                flex-wrap: wrap;
+                
+            }
+
+            .step-nav{
+                background-color:rgb(48, 108, 99);
+            }
+
+            .main-nav-box:hover .step-nav{
+                display: flex;
+                flex-wrap: wrap;
+                position:absolute;
+                width: 100%;
+                left:0;
+                top:100%;
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <input type="checkbox" name="list" id="menu-control">
+    <header class="main-header">
+        <div class="logo">
+            <h1>
+                <a href="#"><img src="/homework_1215/doge.png"></a>
+            </h1>
+        </div>
+        <!-- -------------- -->
+        <label for="menu-control" class="HB">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <!-- -------------- -->
+        <div class="main-nav">
+            <div class="main-nav-box">
+                <a href="#">選項A</a>
+                
+                    <input type="checkbox" name="list" id="list-control-about">
+                    <label for="list-control-about" class="LHB">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                    <div class="step-nav">
+                        <a href="#">子選項</a>
+                        <a href="#">子選項</a>
+                        <a href="#">子選項</a>
+                    </div>
+                
+            </div>
+            <div class="main-nav-box">
+                <a href="#">選項B</a>
+                <input type="checkbox" name="list" id="list-control-members">
+                <label for="list-control-members" class="LHB">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <div class="step-nav">
+                    <a href="#">子選項</a>
+                    <a href="#">子選項</a>
+                </div>
+            </div>
+            <div class="main-nav-box">
+                <a href="#">選項C</a>
+                <input type="checkbox" name="list" id="list-control-service">
+                <label for="list-control-service" class="LHB">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <div class="step-nav">
+                    <a href="#">子選項</a>
+                    <a href="#">子選項</a>
+                    <a href="#">子選項</a>
+                </div>
+            </div>
+            <div class="main-nav-box">
+                <a href="#">選項D</a>
+                <input type="checkbox" name="list" id="list-control-contact">
+                <label for="list-control-contact" class="LHB">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <div class="step-nav">
+                    <a href="#">子選項</a>
+                    <a href="#">子選項</a>
+                    <a href="#">子選項</a>
+                </div>
+            </div>
+            </div>
+        </div>
+</body>
+</html>
