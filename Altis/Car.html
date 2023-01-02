@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <button class="left">left</button>
+        <div class="images"><img src="./pic/AltisGray/360EXT_1_18_1.png"></div>
+        <button class="right">right</button>
+    </div>
+        
+    <script>
+
+let carArray = [];
+
+let btnRight = document.querySelector('.right');
+let btnLeft = document.querySelector('.left');
+let img = document.querySelector('img');
+
+let range = document.querySelector('input');
+
+let color = 18;
+
+let rangeBool = false;
+let min = 0;
+
+const num = 1;
+
+
+
+window.onload = function () {
+
+
+    let x = 0; // 索引
+    let time;
+
+    // 左鍵
+    btnLeft.addEventListener('click', function () {
+
+        if (x == 59) {
+            x = 0;
+        }
+        else {
+            x++;
+        }
+        img.setAttribute('src', carArray[x]);
+
+        // 連續觸發
+        btnLeft.onmousedown = function (e) {
+            time = setInterval(function () {
+
+                if (x == 59) {
+                    x = 0;
+                }
+                else {
+                    x++;
+                }
+
+                img.setAttribute('src', carArray[x]);
+
+            }, 40);
+        };
+        btnLeft.onmouseup = function (e) {
+            clearInterval(time);
+        }
+        btnLeft.onmouseout = function (e) {
+            clearInterval(time);
+        }
+
+    });
+    // 右鍵
+    btnRight.addEventListener('click', function () {
+
+        if (x == 0) {
+            x = 59;
+        }
+        else {
+            x--;
+        }
+        img.setAttribute('src', carArray[x]);
+
+
+        // 連續觸發
+        btnRight.onmousedown = function (e) {
+            time = setInterval(function () {
+                if (x == 0) {
+                    x = 59;
+                }
+                else {
+                    x--;
+                }
+                img.setAttribute('src', carArray[x]);
+            }, 40);
+        };
+        btnRight.onmouseup = function (e) {
+            clearInterval(time);
+        }
+        btnRight.onmouseout = function (e) {
+            clearInterval(time);
+        }
+    });
+
+
+    
+
+    for (let x = 1; x <= 60; x++) {
+
+        // let urlTemplate = `https://hotaicdn.azureedge.net/toyotaweb/360EXT_1_${color}_${x}.png`;
+        let urlTemplate = `./pic/AltisGray/360EXT_1_18_${x}.png`;
+        // push 存入 carArray 陣列
+        carArray.push(urlTemplate);
+    }
+}
+    </script>
+</body>
+</html>
